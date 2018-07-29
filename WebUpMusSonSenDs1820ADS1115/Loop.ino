@@ -4,7 +4,7 @@ void loop(void){
 // watchdogCount = 0; 
 //}
   watchdogCount = 0;
-  if (digitalRead(button) == LOW){while(1){}};
+  if (digitalRead(button) == LOW){Udp.stop(); delay(1000); Udp.begin(localPort); loopUDP();{}};
   #ifdef ledblink
     digitalWrite(ledCurrent, HIGH);
     delay(1);

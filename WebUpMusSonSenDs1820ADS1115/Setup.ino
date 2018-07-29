@@ -110,9 +110,12 @@ if ((digitalRead(button) == HIGH) | ultrasonicEn) {
 
   
 
-  if (ntpEn){ 
-  Udp.begin(localPort);  
-  ////Serial.println("\nGet NTP data...");
+  if (ntpEn){
+    int uvar; 
+  uvar = Udp.begin(localPort);
+  delay(1000);  
+  Serial.println("\nUdp.begin ");
+  Serial.println(uvar);
   dataRecive = 0;
   
   loopUDP();

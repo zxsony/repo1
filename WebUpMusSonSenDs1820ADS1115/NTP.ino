@@ -12,18 +12,24 @@ unsigned long sendNTPpacket(IPAddress& address) {
   packetBuffer[15]  = 52;
   Udp.beginPacket(address, 123);
   Udp.write(packetBuffer, NTP_PACKET_SIZE);
-  Udp.endPacket();
+  int uend;
+  uend = Udp.endPacket();
+  Serial.print("Udp.endPacket=");
+  Serial.println(uend);
 }
 
-void sendReciveUDP(IPAddress& address){
+void sendReciveUDP(IPAddress address){
   sendNTPpacket(address);
-  delay(300);
-    digitalWrite(ledPinBR2, HIGH);
-  delay(300); // wait to see if a reply is available
-    digitalWrite(ledPinBR2, LOW);
-  delay(300);
+  delay(1000);
+//    digitalWrite(ledPinBR2, HIGH);
+//  delay(300); // wait to see if a reply is available
+//    digitalWrite(ledPinBR2, LOW);
+//  delay(300);
   //dataRecive = 0;
-  if (Udp.parsePacket()) {
+  int cb = Udp.parsePacket();
+    if (cb) {
+    Serial.print("packet received, length=");
+    Serial.println(cb);
     //Serial.println("packet received");
     Udp.read(packetBuffer, NTP_PACKET_SIZE);
 
@@ -42,6 +48,9 @@ void sendReciveUDP(IPAddress& address){
     digitalWrite(ledPinGR1, LOW);
     return;
   }
+    Serial.print("packet received, length=");
+    Serial.println(cb);
+    
     digitalWrite(ledPinR, HIGH);
     delay(300);
     digitalWrite(ledPinR, LOW);
