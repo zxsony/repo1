@@ -194,6 +194,22 @@ serverIndex ="";
       server.send(200, "text/html", "<form method='POST' action='/update' enctype='multipart/form-data'><input type='file' name='update'><input type='submit' value='Update'>");
     });
 
+      server.on("/up", HTTP_GET, [](){
+      server.sendHeader("Connection", "close");
+      server.sendHeader("Access-Control-Allow-Origin", "*");
+      server.send(200, "text/html", "<html><head><title>ESP8266</title><meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><script>alert( 'Час -' );document.location.href='/';</script>");
+      
+      tempTimeChange ++;
+    });
+
+      server.on("/down", HTTP_GET, [](){
+      server.sendHeader("Connection", "close");
+      server.sendHeader("Access-Control-Allow-Origin", "*");
+      server.send(200, "text/html", "<html><head><title>ESP8266</title><meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><script>alert( 'Час +' );document.location.href='/';</script>");
+      
+      tempTimeChange --;
+    });
+
       server.on("/u", HTTP_GET, [](){
       server.sendHeader("Connection", "close");
       server.sendHeader("Access-Control-Allow-Origin", "*");

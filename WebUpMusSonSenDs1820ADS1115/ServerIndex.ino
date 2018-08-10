@@ -10,6 +10,14 @@ void GetServerIndex (void){
   serverIndex += "</a></td><td><a href='/info'>";
   serverIndex += ver;
   serverIndex += "</a></td><td><a href='/update2'>Upd.2</a>";
+  
+  serverIndex += "</a></td><td><a href='/up'>";
+  serverIndex += timeH;
+  serverIndex += "</a>";
+  serverIndex += "</a></td><td><a href='/down'>";
+  serverIndex += timeM;
+  serverIndex += "</a>";
+  
   serverIndex += "</td></tr></table><table border='1' bgcolor='Gainsboro'>";
   
   serverIndex += "<tr><td>APIP:</td><td>";

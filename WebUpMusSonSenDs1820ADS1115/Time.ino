@@ -2,7 +2,6 @@
 void updateCurrent (){
   currentTimeDevice = millis();
   currentSecsSince1900 = startSecsSince1900 + ((currentTimeDevice / 1000) - startTimeDevice/1000) + 3600*3;// - 3600*7 - 60*16;
-  
   parseLongWord(lastSynchroDevice);
   lastSynchroDeviceString = timeString;
 
@@ -33,7 +32,8 @@ bool parseLongWord(unsigned long data)
 {
   timeString = "";
   timeString = ((data  % 86400L) / 3600);
-  timeH = ((data  % 86400L) / 3600);
+  timeH = ((data  % 86400L) / 3600)  - tempTimeChange;
+  
   timeString += (':');
   if (((data % 3600) / 60) < 10) {
     timeString += ('0');

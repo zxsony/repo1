@@ -20,7 +20,7 @@ const char* host = "esp8266-webupdate";
 #define board4
 //String deviceId = "1";  //1=loc, sound; 2=loc, temp
                         //3=pn, temp; 4=td, temp
-String ver = "v2.4.5b";
+String ver = "v2.4.6b";
 //////////////////////
 #ifdef board1
   bool mp3En = 1;
@@ -138,6 +138,7 @@ unsigned long lastStartDevice, lastSynchroDevice, timeCheck, synCheck, soundDela
 String timeString, currentTimeDeviceString, lastStartDeviceString, lastSynchroDeviceString, countDownTimeString, ntpRegion;
 byte timeD, timeH, timeM, timeS, testByte;
 bool dataRecive;
+int tempTimeChange = 0;
 unsigned int localPort = 2390;
 //IPAddress timeServer(129, 6, 15, 30);// 28, 29
 
